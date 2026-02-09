@@ -4,7 +4,13 @@ A hands-on guide to **agentic coding with GitHub Copilot**, built around a minim
 
 ## How to run
 
-Open `index.html` in your browser.
+In the terminal, start a simple HTTP server:
+
+```bash
+npx serve .
+```
+
+Then open the URL shown in the terminal (Codespaces will auto-forward the port for you).
 
 ## Exercise
 
