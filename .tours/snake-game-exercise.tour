@@ -1,0 +1,71 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Snake Game - Agentic Coding Exercise",
+  "isPrimary": true,
+  "steps": [
+    {
+      "file": "game.js",
+      "line": 1,
+      "title": "Welcome!",
+      "description": "Welcome to the **Agentic Coding Exercise**!\n\nYou're looking at a simple snake game. It works... but it's missing a lot. No food, no score, questionable code quality. Perfect.\n\nOver the next 8 steps, you'll use **GitHub Copilot** to improve this game — and learn how to work *with* an AI agent effectively. You'll explore, build features, make mistakes (on purpose!), and discover why *how you ask* matters as much as *what you ask*.\n\nReady? Hit **Next** to start."
+    },
+    {
+      "file": "game.js",
+      "line": 1,
+      "title": "Step 1: Explore the codebase",
+      "description": "Before changing anything, let's understand what we're working with.\n\nOpen **GitHub Copilot Chat** and switch to **Ask mode** (use the mode dropdown at the bottom). In Ask mode, Copilot is **read-only** — it can analyze code but won't edit anything. Safe for exploration.\n\nSelect **GPT-5 mini** as the model (click the model selector). It's fast and lightweight — perfect for a quick summary.\n\nNow ask it to explain this project: what it does, how to run it, what's missing, what could be improved.\n\n<details><summary>Hint</summary>\n\nTry: *\"Summarize this project. What does it do, how do I run it, and what's missing or could be improved?\"*\n\n</details>"
+    },
+    {
+      "directory": "assets",
+      "title": "Step 2: Feed the snake",
+      "description": "Have you noticed our snake is hungry? Poor thing just slithers around with nothing to eat.\n\nIn classic snake games, food appears on the board — the snake eats it, grows longer, and new food spawns. Let's add that! There's a `food.png` sprite right here in the assets folder.\n\nSwitch Copilot to **Agent mode** and select **Gemini 3 Flash** as the model — it's a stronger coding model, still cheap (0.33 credits). Ask it to add food using this sprite. Be specific about the behavior you want: the snake eats the food, grows by one segment, the eaten food disappears, and a new food appears at a random spot.\n\nOnce it's done, run the game and see how it feels.\n\n<details><summary>Hint</summary>\n\nTry: *\"Add a food mechanic. Use assets/food.png as the sprite. When the snake's head reaches the food, the snake grows by one segment, the food disappears, and new food spawns at a random grid position.\"*\n\n</details>"
+    },
+    {
+      "file": "game.js",
+      "line": 17,
+      "title": "Step 3: It works, but...",
+      "description": "The game runs great. Food appears, snake eats it, everything looks perfect. Ship it, right?\n\nNot so fast. Check the file size of `food.png` — it's **34 MB**, an 8192x8192 image. Your game draws it at 20x20 pixels. That's like loading your wallet with $1000 when you just want to buy some bread in the corner shop.\n\nThe AI did exactly what you asked. The code works. But you're silently wasting resources because your instructions said nothing about asset size or format. This is **vibe coding** — it works, so we move on, when we could easily do much better.\n\n**Lesson:** As engineers, we verify not just *that* it works, but *how* it works.\n\n<details><summary>Hint</summary>\n\nRun `ls -lh assets/food.png` in the terminal to see the file size. Then think: what size and format would actually make sense for a 20x20 sprite?\n\n</details>"
+    },
+    {
+      "directory": "assets",
+      "title": "Step 4: Fix the asset",
+      "description": "Let's fix the bloated asset. **Open a new chat** and ask Copilot to write a quick script that converts `food.png` to a **128x128 WebP** at 98% quality. Run the script, then update the game code to use the optimized version.\n\nThis is a great use of agentic coding — throwaway utility scripts. Let the AI write the boring conversion code so you can focus on the game.\n\n<details><summary>Hint</summary>\n\nTry: *\"Write a script that converts assets/food.png to a 128x128 WebP file at 98% quality. Save it as assets/food.webp.\"* Then run it and update the `foodImage.src` in game.js.\n\n</details>"
+    },
+    {
+      "file": "game.js",
+      "line": 1,
+      "title": "Step 5: Write a code guide",
+      "description": "The asset is fixed — but how do we stop this from happening again?\n\nCreate a file called `AGENTS.md` in the project root. This is a **code guide** — a note you leave for the AI. Copilot reads it automatically and follows whatever rules you write here. (It's a cross-tool standard — works with Copilot, Claude, and others.)\n\nThink of it as your project's memory. Anything you want the AI to remember — conventions, constraints, preferences — goes here. For example:\n\n- *\"Use optimized image assets (WebP, max 2x display size)\"*\n- *\"Use camelCase for all variable and function names\"*\n- *\"Add emoji to user-facing messages\"*\n- *\"Never create objects inside the game loop\"*\n\nBe creative — these are *your* rules.\n\n<details><summary>Hint</summary>\n\nStart simple: 3-5 rules based on what you've learned so far. You can always add more later as you discover new patterns.\n\n</details>"
+    },
+    {
+      "file": "game.js",
+      "line": 1,
+      "title": "Step 6: Plan before you build",
+      "description": "Time for a bigger feature: **scoring + a game-over screen.** The player should see their score go up as they eat food, and when the snake dies, a game-over screen should show the final score.\n\nStart a **fresh chat** with **Gemini 3 Flash** — old context can pile up and quietly degrade the AI's output.\n\nNow, don't jump straight to coding. When you let the AI dive in without a plan, it tends to miss things or lose track of the bigger picture. Instead, ask it to **explore the codebase first**, then **make a plan** — which files to change, what to add, in what order. That plan becomes a checklist: easy for you to follow, and it keeps the model organized so nothing gets skipped.\n\n1. In **Plan mode**, ask Copilot to plan the feature. It may ask you clarifying questions — be ready with answers!\n2. Review the plan. Happy? Hit **Start Implementation**. If not, tell the agent what's wrong\n3. **Critique** — does the result match the plan? Does it follow your code guide?\n\n<details><summary>Hint</summary>\n\nTry: *\"Explore the codebase and plan how to add a score counter and a game-over screen. Don't write code yet — outline which files and functions you'd change, and in what order.\"*\n\n</details>"
+    },
+    {
+      "file": "game.js",
+      "line": 1,
+      "title": "Step 7: Refactor (safely!)",
+      "description": "AI agents tend to leave junk and silent waste in your codebase — unused variables, messy structure, everything piled into one file. As the human reviewer and maintainer, it's your job to keep things clean.\n\nImagine a senior teammate reviewed your code and said: *\"`game.js` is too long — it's one file with too much logic. Split it up.\"* Fair point. Let's clean it up.\n\nBut wait — **commit your work first!** Refactoring can break things, and you want a safety net to roll back to. This is non-negotiable: always commit before a big restructure.\n\nDone? Now ask Copilot to **refactor** `game.js` — split it into separate modules (e.g., `snake.js`, `input.js`, `renderer.js`). After it's done, run the game. Does it still work?\n\nIf not — that's what the commit was for.\n\n<details><summary>Hint</summary>\n\nTry: *\"Refactor game.js into separate ES modules: one for snake logic, one for input handling, one for rendering. Update index.html to load them.\"*\n\n</details>"
+    },
+    {
+      "file": "game.js",
+      "line": 1,
+      "title": "Step 8: Trust, but verify",
+      "description": "A good habit with AI-generated code: regularly ask the agent to write tests and run them. This catches bugs early — including ones the AI introduced itself.\n\nWe'll skip the hands-on testing step to keep the workshop on time, but here's the practice: ask Copilot to generate tests in a separate file, run them with `node --test`, and review the results. You'd be surprised how often the AI writes a correct test that exposes a bug in its own code.\n\nFor example — try pressing the opposite direction while the snake is moving. Nothing stops it from reversing into itself. A good test would catch that!\n\n<details><summary>Hint</summary>\n\nTry on your own time: *\"Write tests for handleKeyPress that verify the snake cannot reverse direction. Run them with node --test.\"*\n\n</details>"
+    },
+    {
+      "file": "game.js",
+      "line": 1,
+      "title": "Quiz: Why step-by-step?",
+      "description": "**While vibe-coding with 2026's state-of-the-art models works very well, we still develop in a step-by-step manner. Why?**\n\n**A)** Because AI makes more bugs than human engineers\n**B)** Because AI is not responsible for the code — humans are\n**C)** Because AI tends to overcomplicate solutions\n**D)** Because step-by-step prompts produce fewer hallucinations\n\nPick your answer, then check below.\n\n<details><summary>A</summary>\n\nNot quite. AI-generated code quality is often comparable to human code. The issue isn't about bug count — it's about who owns the result.\n\n</details>\n\n<details><summary>B</summary>\n\nCorrect! You sign off on the code. You maintain it. You debug it at 2 AM. Working step-by-step keeps you in control and ensures you understand every change going into your codebase. The AI is a powerful tool, but the responsibility is yours.\n\n</details>\n\n<details><summary>C</summary>\n\nNot really. AI can produce clean, simple solutions — it depends on your prompt and constraints. Overcomplication isn't inherent to AI.\n\n</details>\n\n<details><summary>D</summary>\n\nWhile step-by-step prompting can be helpful, that's not really the reason we do it. It's about human ownership and understanding, not prompt engineering tricks.\n\n</details>"
+    },
+    {
+      "file": "game.js",
+      "line": 1,
+      "title": "Keep going!",
+      "description": "Congratulations — you've completed the exercise!\n\nYou've explored, built features, hit a real-world trap, written a code guide, planned before coding, refactored safely, and learned about testing. That's the full agentic coding toolkit.\n\nIf you finished early and want to explore further, see how far you can take this snake game! Here are a few ideas:\n\n- Obstacles that appear as the score increases\n- The snake speeding up over time\n- Poisoned food that shrinks the snake\n- A high score leaderboard\n- Walls that wrap around instead of killing you\n\nHappy coding!"
+    }
+  ]
+}

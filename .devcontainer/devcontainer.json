@@ -1,0 +1,12 @@
+{
+  "name": "Snake Game",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ritwickdey.LiveServer",
+        "vsls-contrib.codetour"
+      ]
+    }
+  }
+}
