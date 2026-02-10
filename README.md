@@ -14,4 +14,4 @@ Then open the URL shown in the terminal (Codespaces will auto-forward the port f
 
 ## Exercise
 
-This game is the starting point for an agentic coding exercise. Follow the guided tour (auto-opens in VS Code) or read [STEPS.md](STEPS.md) for the full walkthrough.
+This game is the starting point for an agentic coding exercise.
