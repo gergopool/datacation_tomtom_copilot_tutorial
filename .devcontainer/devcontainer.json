@@ -4,8 +4,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "ritwickdey.LiveServer",
-        "vsls-contrib.codetour"
+        "ritwickdey.LiveServer"
       ]
     }
   }
